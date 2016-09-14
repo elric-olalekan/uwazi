@@ -67,6 +67,14 @@ export class EntityViewer extends Component {
                 </ShowIf>
               </NeedAuthorization>
               <ShowIf if={entityBeingEdited}>
+                <button
+                  onClick={() => this.props.loadInReduxForm('entityView.entityForm', this.props.rawEntity, this.props.templates)}
+                  className="edit-metadata btn btn-primary">
+                  <i className="fa fa-close"></i>
+                  <span className="btn-label">Cancel</span>
+                </button>
+              </ShowIf>
+              <ShowIf if={entityBeingEdited}>
                 <button type="submit" form="metadataForm" className="edit-metadata btn btn-success">
                   <i className="fa fa-save"></i>
                   <span className="btn-label">Save</span>
