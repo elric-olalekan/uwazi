@@ -68,7 +68,7 @@ export class EntityViewer extends Component {
               </NeedAuthorization>
               <ShowIf if={entityBeingEdited}>
                 <button
-                  onClick={() => this.props.loadInReduxForm('entityView.entityForm', this.props.rawEntity, this.props.templates)}
+                  onClick={() => this.props.resetForm('entityView.entityForm')}
                   className="edit-metadata btn btn-primary">
                   <i className="fa fa-close"></i>
                   <span className="btn-label">Cancel</span>
@@ -183,6 +183,7 @@ EntityViewer.propTypes = {
   templates: PropTypes.array,
   relationTypes: PropTypes.array,
   loadInReduxForm: PropTypes.func,
+  resetForm: PropTypes.func,
   deleteEntity: PropTypes.func,
   deleteReference: PropTypes.func
 };
@@ -210,6 +211,7 @@ const mapStateToProps = (state) => {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     loadInReduxForm: actions.loadInReduxForm,
+    resetForm: actions.resetReduxForm,
     deleteEntity,
     deleteReference
   }, dispatch);
